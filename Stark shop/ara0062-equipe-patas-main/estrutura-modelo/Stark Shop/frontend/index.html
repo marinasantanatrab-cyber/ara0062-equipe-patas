@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STARK SHOP</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <header>
+        <h1>STARK SHOP</h1>
+        <p>Cuidado e carinho para o seu melhor amigo!</p>
+    </header>
+
+    <main>
+        <section id="servicos">
+            <h2>Nossos Serviços</h2>
+            <ul>
+                <li>Banho e Tosa</li>
+                <li>Consultas Veterinárias</li>
+                <li>Vacinação e Exames</li>
+            </ul>
+        </section>
+
+        <section id="contato">
+            <h2>Fale Conosco / Agendamento</h2>
+            <form action="../backend/processa-contato.php" method="POST">
+                <label for="nome">Nome do Tutor:</label><br>
+                <input type="text" id="nome" name="nome" required><br><br>
+
+                <label for="pet">Nome do Pet:</label><br>
+                <input type="text" id="pet" name="pet" required><br><br>
+
+                <label for="mensagem">Mensagem / Serviço Desejado:</label><br>
+                <textarea id="mensagem" name="mensagem" rows="4" required></textarea><br><br>
+
+                <button type="submit">Enviar Solicitação</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 STARK SHOP - ARA0062</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
