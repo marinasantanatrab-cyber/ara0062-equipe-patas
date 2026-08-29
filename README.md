@@ -9,8 +9,8 @@ Website institucional e sistema de agendamento/contato para o Pet Shop e Clínic
 
 | Nome Completo | Matrícula | Usuário GitHub |
 | :--- | :--- | :--- |
-| [Raquel Pacheco Mendes] (Líder) | 202602255936 | RaquelMendes-tech |
-| [Marina Pinheiro Santana] | 202603158772 | MarinaSantanaDEV |
+| [Marina Pinheiro Santana] (Líder) |  202603158772 |  MarinaSantanaDEV |
+| [Raquel Pacheco Mendes] | 202602255639 |  RaquelMendes-tech |
 | [Matheus Salazar Pereira] | 202602188643 | salazarbh56-codificador |
 | [Izabelle Duarte Rodrigues] | 202601388576 | @usuario-4 |
 | [Priscila Da Costa Pereira] | 202602529645 | @usuario-5 |
