@@ -12,7 +12,7 @@ Website institucional e sistema de agendamento/contato para o Pet Shop e Clínic
 | [Marina Pinheiro Santana] (Líder) |  202603158772 |  MarinaSantanaDEV |
 | [Raquel Pacheco Mendes] | 202602255639 |  RaquelMendes-tech |
 | [Matheus Salazar Pereira] | 202602188643 | salazarbh56-codificador |
-| [Izabelle Duarte Rodrigues] | 202601388576 | @usuario-4 |
+| [Izabelle Duarte Rodrigues] | 202601388576 | Izabelled|
 | [Priscila Da Costa Pereira] | 202602529645 | @usuario-5 |
 
 ---
