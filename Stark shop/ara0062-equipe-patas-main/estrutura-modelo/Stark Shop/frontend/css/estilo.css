@@ -97,3 +97,26 @@ textarea {
     color: var(--branco);
     font-family: inherit;
 }
+button {
+    margin-top: 15px;
+    padding: 14px 24px;
+    background-color: var(--vinho);
+    color: var(--branco);
+    border: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+ 
+button:hover {
+    background-color: var(--vinho-claro);
+}
+ 
+footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    border-top: 1px solid var(--borda);
+    text-align: center;
+    color: var(--cinza);
+    font-size: 14px;
+}
