@@ -2,29 +2,30 @@
    STARK SHOP - Folha de Estilos do Projeto (Ciclo 4)
    ========================================================================== */
 
+:root {
+  --principal:       #7a1030;  /* cabeçalho, títulos, bordas */
+  --sobre-principal: #ffffff;  /* texto EM CIMA da principal */
+  --apoio:           #0d5c63;  /* botão, destaques */
+  --fundo:           #f7f3f4;  /* fundo da página */
+  --superficie:      #ffffff;  /* cartões, conteúdo */
+  --texto:           #231f20;  /* cor das letras */
+  --borda:           #e0d6da;  /* linhas e molduras */
+  --fonte: "Poppins", Arial, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    color: #333333;
-    background-color: #f8f9fa;
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 20px 40px;
-}
-
-h1, h2 {
-    color: #1e3a8a;
-}
-
-button {
-    background-color: #1e3a8a;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
+  background-color: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
 }
 header {
     padding: 30px 0;
@@ -64,9 +65,6 @@ nav a:hover {
 }
 
 
-button:hover {
-    background-color: #2563eb;
-}
 fieldset {
     border: 1px solid var(--borda);
     border-radius: 6px;
