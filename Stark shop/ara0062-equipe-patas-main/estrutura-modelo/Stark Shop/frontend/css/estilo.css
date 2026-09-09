@@ -3,14 +3,15 @@
    ========================================================================== */
 
 :root {
-  --principal:       #7a1030;  /* cabeçalho, títulos, bordas */
-  --sobre-principal: #ffffff;  /* texto EM CIMA da principal */
-  --apoio:           #0d5c63;  /* botão, destaques */
-  --fundo:           #f7f3f4;  /* fundo da página */
-  --superficie:      #ffffff;  /* cartões, conteúdo */
-  --texto:           #231f20;  /* cor das letras */
-  --borda:           #e0d6da;  /* linhas e molduras */
-  --fonte: "Poppins", Arial, sans-serif;
+  --principal:       #a5231d;  /* vinho da marca: cabeçalho, botões */
+  --sobre-principal: #ffffff;  /* texto EM CIMA do vinho */
+  --apoio:           #c2342b;  /* vinho claro: destaques, hover */
+  --fundo:           #101112;  /* preto da página */
+  --superficie:      #1b1c1d;  /* cartões, conteúdo */
+  --texto:           #f3f0eb;  /* off-white das letras */
+  --borda:           #2a2b2d;  /* linhas e molduras */
+  --fonte:  "DM Sans", Arial, sans-serif;
+  --titulo: "Playfair Display", Georgia, serif;
 }
 
 *, *::before, *::after {
