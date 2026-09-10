@@ -28,6 +28,7 @@ body {
   margin: 0 auto;
   padding: 0 20px 40px;
 }
+
 header {
   background-color: var(--principal);
   color: var(--sobre-principal);
@@ -66,7 +67,8 @@ nav a {
 nav a:hover {
   background-color: rgba(255, 255, 255, .15);
 }
- 
+
+/* 3. PRISCILA — títulos e o miolo */
 h1, h2, h3 {
   font-family: var(--titulo);
   font-weight: 500;
@@ -97,80 +99,87 @@ section {
 section ul {
   padding-left: 1.25rem;
 }
- 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
-}
- 
-nav li {
-    display: inline-block;
-    margin-right: 20px;
-}
- 
-nav a {
-    color: var(--branco);
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 14px;
-}
- 
-nav a:hover {
-    color: var(--vinho-claro);
+
+/* 4. ISA — a tabela de preços */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
 }
 
+caption {
+  text-align: left;
+  padding-bottom: .75rem;
+  color: var(--texto);
+  font-style: italic;
+}
 
+th, td {
+  padding: .75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--borda);
+}
+
+thead th {
+  background-color: var(--principal);
+  color: var(--sobre-principal);
+  text-transform: uppercase;
+  font-size: .8125rem;
+  letter-spacing: .06em;
+}
+
+/* Formulário e Rodapé */
 fieldset {
-    border: 1px solid var(--borda);
-    border-radius: 6px;
-    padding: 18px 20px;
-    margin-top: 15px;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  padding: 18px 20px;
+  margin-top: 15px;
 }
- 
+
 legend {
-    color: var(--vinho-claro);
-    font-weight: bold;
-    padding: 0 8px;
+  color: var(--apoio);
+  font-weight: bold;
+  padding: 0 8px;
 }
- 
+
 label {
-    display: block;
-    font-weight: bold;
-    margin-top: 12px;
+  display: block;
+  font-weight: bold;
+  margin-top: 12px;
 }
- 
+
 input[type="text"],
 input[type="email"],
 textarea {
-    width: 100%;
-    padding: 10px 12px;
-    margin-top: 4px;
-    background-color: #171819;
-    border: 1px solid #3b3d3f;
-    color: var(--branco);
-    font-family: inherit;
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 4px;
+  background-color: #171819;
+  border: 1px solid #3b3d3f;
+  color: var(--texto);
+  font-family: inherit;
 }
+
 button {
-    margin-top: 15px;
-    padding: 14px 24px;
-    background-color: var(--vinho);
-    color: var(--branco);
-    border: none;
-    text-transform: uppercase;
-    font-weight: bold;
-    cursor: pointer;
+  margin-top: 15px;
+  padding: 14px 24px;
+  background-color: var(--principal);
+  color: var(--sobre-principal);
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
 }
- 
+
 button:hover {
-    background-color: var(--vinho-claro);
+  background-color: var(--apoio);
 }
- 
+
 footer {
-    margin-top: 40px;
-    padding: 20px 0;
-    border-top: 1px solid var(--borda);
-    text-align: center;
-    color: var(--cinza);
-    font-size: 14px;
+  margin-top: 40px;
+  padding: 20px 0;
+  border-top: 1px solid var(--borda);
+  text-align: center;
+  color: var(--texto);
+  font-size: 14px;
 }
