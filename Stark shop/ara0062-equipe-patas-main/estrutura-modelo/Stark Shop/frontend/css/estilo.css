@@ -126,46 +126,57 @@ thead th {
   letter-spacing: .06em;
 }
 
-/* Formulário e Rodapé */
 fieldset {
   border: 1px solid var(--borda);
-  border-radius: 6px;
-  padding: 18px 20px;
-  margin-top: 15px;
+  padding: 1.25rem 1.5rem;
+  margin-top: 1rem;
 }
 
 legend {
-  color: var(--apoio);
-  font-weight: bold;
-  padding: 0 8px;
+  color: var(--texto);
+  font-family: var(--titulo);
+  font-size: 1.125rem;
+  padding: 0 .5rem;
 }
 
 label {
   display: block;
-  font-weight: bold;
-  margin-top: 12px;
+  font-weight: 600;
+  font-size: .8125rem;
+  margin-top: .75rem;
+  margin-bottom: .25rem;
 }
 
 input[type="text"],
-input[type="email"],
 textarea {
+  display: block;
   width: 100%;
-  padding: 10px 12px;
-  margin-top: 4px;
-  background-color: #171819;
-  border: 1px solid #3b3d3f;
+  padding: .875rem 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--fundo);
+  border: 1px solid var(--borda);
   color: var(--texto);
   font-family: inherit;
+  font-size: 1rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--apoio);
 }
 
 button {
-  margin-top: 15px;
-  padding: 14px 24px;
+  margin-top: .5rem;
+  padding: .9375rem 1.5rem;
   background-color: var(--principal);
   color: var(--sobre-principal);
   border: none;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 700;
+  font-family: inherit;
+  font-size: .75rem;
+  letter-spacing: .07em;
   cursor: pointer;
 }
 
@@ -174,10 +185,10 @@ button:hover {
 }
 
 footer {
-  margin-top: 40px;
-  padding: 20px 0;
-  border-top: 1px solid var(--borda);
+  margin-top: 2.5rem;
+  padding: 1.5rem 0;
+  border-top: 2px solid var(--principal);
   text-align: center;
   color: var(--texto);
-  font-size: 14px;
+  font-size: .875rem;
 }
