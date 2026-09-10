@@ -68,7 +68,6 @@ nav a:hover {
   background-color: rgba(255, 255, 255, .15);
 }
 
-/* 3. PRISCILA — títulos e o miolo */
 h1, h2, h3 {
   font-family: var(--titulo);
   font-weight: 500;
@@ -100,7 +99,6 @@ section ul {
   padding-left: 1.25rem;
 }
 
-/* 4. ISA — a tabela de preços */
 table {
   width: 100%;
   border-collapse: collapse;
