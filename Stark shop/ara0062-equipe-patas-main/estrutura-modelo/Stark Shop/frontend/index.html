@@ -72,14 +72,18 @@
         <section id="contato">
             <h2>Fale Conosco / Agendamento</h2>
             <form action="../backend/processa-contato.php" method="POST">
-                <label for="nome">Nome do Tutor:</label><br>
-                <input type="text" id="nome" name="nome" required><br><br>
-
-                <label for="pet">Nome do Pet:</label><br>
-                <input type="text" id="pet" name="pet" required><br><br>
-
-                <label for="mensagem">Mensagem / Serviço Desejado:</label><br>
-                <textarea id="mensagem" name="mensagem" rows="4" required></textarea><br><br>
+                                <div>
+                    <label for="nome">Nome do Tutor:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div>
+                    <label for="pet">Nome do Pet:</label>
+                    <input type="text" id="pet" name="pet" required>
+                </div>
+                <div>
+                    <label for="mensagem">Mensagem / Serviço Desejado:</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+                </div>
 
                 <button type="submit">Enviar Solicitação</button>
             </form>
