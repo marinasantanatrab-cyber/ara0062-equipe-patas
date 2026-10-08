@@ -109,3 +109,16 @@ Site institucional do Stark Shop, um pet shop, com serviços, tabela de preços 
 A conformidade visual segue as diretrizes WCAG:
 * *Branco sobre Vinho: razão de contraste de **7,3:1* (supera o nível AAA para texto normal).
 * *Off-White sobre Preto: razão de contraste de **16,4:1* (supera com folga o mínimo recomendado de 4,5:1).
+
+* ## JavaScript
+
+**Formulário:** "Fale Conosco / Agendamento" (`frontend/index.html`, seção `#contato`), conferido por `frontend/js/script.js` no evento `submit`, antes de enviar.
+
+**Regras (uma por linha):**
+* Nome do tutor: espaços duplos são removidos (`while`) e precisa ter entre 3 e 60 letras (`if` com `||`).
+* Nome do tutor: não pode ter números (`for` com `break`, na função `temNumero`).
+* Nome do pet: precisa ter entre 2 e 30 letras (`else if` com `||`).
+* Assunto "Consulta veterinária": a mensagem precisa ter pelo menos 20 caracteres (`else if` com `&&`).
+* Assunto "Agendar um serviço": a mensagem precisa ter pelo menos 10 caracteres (`else if` com `&&`).
+* A dica (placeholder) da mensagem muda conforme o assunto escolhido (`switch` no evento `change`).
+
