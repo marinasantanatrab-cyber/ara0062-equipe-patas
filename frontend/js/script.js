@@ -1,12 +1,3 @@
-// ===========================================================================
-// ARA0062 — comportamento da página
-// Ligado ao index.html pela linha
-// <script src="js/script.js" defer></script>
-// ===========================================================================
-
-// ---------------------------------------------------------------------------
-// 6 · O formulário que confere antes de enviar (aula 07)
-// ---------------------------------------------------------------------------
 const formulario = document.querySelector("form");
 const aviso = document.querySelector("#aviso");
 const campoNome = document.querySelector("#nome");
@@ -56,15 +47,12 @@ function conferirFormulario(evento) {
   } else if (campoAssunto.value === "agendamento" && mensagem.length < 10) {
     aviso.textContent = "Diga o serviço e o dia desejado (mínimo 10 caracteres).";
   } else {
-    aviso.textContent = "Tudo certo! (No ciclo 8, isto vai para o PHP.)";
+    aviso.textContent = "Tudo certo!";
   }
 }
 
 formulario.addEventListener("submit", conferirFormulario);
-
-// ---------------------------------------------------------------------------
-// 7 · A dica da mensagem muda com o assunto (switch)
-// ---------------------------------------------------------------------------
+-------------------------------------------------------------
 function trocarDica() {
   switch (campoAssunto.value) {
     case "duvida":
