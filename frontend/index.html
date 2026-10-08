@@ -71,8 +71,8 @@
 
         <section id="contato">
             <h2>Fale Conosco / Agendamento</h2>
-            <form action="../backend/processa-contato.php" method="POST">
-                                <div>
+            <form action="../backend/controllers/processa-contato.php" method="POST">
+                <div>
                     <label for="nome">Nome do Tutor:</label>
                     <input type="text" id="nome" name="nome" required>
                 </div>
@@ -81,11 +81,21 @@
                     <input type="text" id="pet" name="pet" required>
                 </div>
                 <div>
+                    <label for="assunto">Assunto:</label>
+                    <select id="assunto" name="assunto">
+                        <option value="duvida">Uma dúvida</option>
+                        <option value="agendamento">Agendar um serviço</option>
+                        <option value="consulta">Consulta veterinária</option>
+                        <option value="outro">Outro assunto</option>
+                    </select>
+                </div>
+                <div>
                     <label for="mensagem">Mensagem / Serviço Desejado:</label>
                     <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
                 </div>
 
                 <button type="submit">Enviar Solicitação</button>
+                <p id="aviso" class="aviso" aria-live="polite"></p>
             </form>
         </section>
     </main>
@@ -94,6 +104,6 @@
         <p>&copy; 2026 STARK SHOP - ARA0062</p>
     </footer>
   
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
