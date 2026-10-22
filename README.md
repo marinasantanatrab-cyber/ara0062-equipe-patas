@@ -133,3 +133,28 @@ A conformidade visual segue as diretrizes WCAG:
 * Troca o `value` do assunto pelo texto que a pessoa leu (`switch`).
 * Passa tudo o que veio do formulário por `htmlspecialchars()` antes de mostrar na página.
 * Devolve uma página de agradecimento com o mesmo CSS do site.
+
+## Banco de dados
+
+**Arquivos:** `backend/sql/banco.sql` (cria o banco), `backend/config/conexao.php` (a conexão) e `backend/controllers/mensagens.php` (a lista).
+
+**Como criar o banco (uma vez em cada computador):**
+1. No painel do XAMPP, **Start** no Apache e no MySQL.
+2. Abra `http://localhost/phpmyadmin` → aba **SQL** → cole o conteúdo de `backend/sql/banco.sql` → **Executar**.
+
+**O banco:** `stark_shop` (`utf8mb4`), com a tabela `mensagens`:
+
+| Coluna | Tipo | Quem preenche |
+| :--- | :--- | :--- |
+| `id` | `INT AUTO_INCREMENT PRIMARY KEY` | o banco (1, 2, 3…) |
+| `nome` | `VARCHAR(60)` | o formulário (nome do tutor) |
+| `pet` | `VARCHAR(30)` | o formulário (nome do pet) |
+| `assunto` | `VARCHAR(20)` | o formulário (o `value` do `<option>`) |
+| `mensagem` | `TEXT` | o formulário |
+| `criada_em` | `DATETIME DEFAULT CURRENT_TIMESTAMP` | o banco (o "agora" da gravação) |
+
+**O que o PHP faz com ele:**
+* `conexao.php` abre a conexão com `new PDO(...)` (usuário `root`, sem senha: só no XAMPP); quem precisa do banco o inclui com `require`.
+* `processa-contato.php` para com `exit` se o nome vier vazio (arquivo aberto direto), grava a mensagem com `prepare` + `execute` e `?` no lugar dos valores (nada de variável colada no SQL: evita quebra com apóstrofo e SQL injection) e mostra o número com `lastInsertId()`.
+* O texto é gravado original; o `htmlspecialchars()` continua na hora de mostrar.
+* `mensagens.php` lê tudo com `query("SELECT * FROM mensagens ORDER BY id DESC")` e `fetchAll()`, e monta uma linha da tabela para cada mensagem com `foreach … endforeach`. Abra em `http://localhost/ara0062-equipe-patas/backend/controllers/mensagens.php`.
