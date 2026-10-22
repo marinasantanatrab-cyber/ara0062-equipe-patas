@@ -192,3 +192,20 @@ footer {
   color: var(--texto);
   font-size: .875rem;
 }
+
+/* ==========================================================================
+   10. O AVISO DO FORMULÁRIO (aula 07)
+   ========================================================================== */
+.aviso {
+  margin: 1rem 0 0;
+  padding: .5rem 1rem;
+  border-left: 4px solid var(--principal);
+  background-color: var(--superficie);
+  color: var(--texto);
+  font-weight: 600;
+}
+
+/* vazio, ele não ocupa espaço nem mostra a borda */
+.aviso:empty {
+  display: none;
+}
