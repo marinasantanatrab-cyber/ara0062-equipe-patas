@@ -52,7 +52,7 @@ frontend/
 
 - **Navegação & Header:** Barra de navegação intuitiva com links rápidos pelas seções da loja.
 - **Vitrine de Produtos:** Exibição de cards de produtos com títulos, descrições, preços e botões de ação.
-- **Formulário de Contato / Atendimento:** Coleta de dados com validação no cliente antes do envio para o endpoint backend (`processa-contato.php`).
+- **Formulário de Contato / Atendimento:** Coleta de dados com validação no cliente antes do envio para o endpoint backend (`backend/controllers/processa-contato.php`).
 - **Design Responsivo:** Adaptado para telas mobile, tablets e desktops.
 
 ---
@@ -73,14 +73,14 @@ Para testar a integração completa com o formulário/PHP, é necessário rodar 
 2. Certifique-se de que o servidor Apache e o MySQL estejam ativos.
 3. Acesse pelo navegador:
    ```text
-   http://localhost/ara0062-equipe-patas-main/estrutura-modelo/Stark%20Shop/frontend/index.html
+   http://localhost/ara0062-equipe-patas/frontend/
    ```
 
 ---
 
 ##  Integração com o Backend
 
-- O formulário de contato realiza uma requisição `POST` direcionada para `../backend/processa-contato.php`.
+- O formulário de contato realiza uma requisição `POST` direcionada para `../backend/controllers/processa-contato.php`.
 - Certifique-se de que as credenciais do banco de dados estejam configuradas em `backend/config/conexao.php`.
 
 ---
@@ -110,9 +110,9 @@ A conformidade visual segue as diretrizes WCAG:
 * *Branco sobre Vinho: razão de contraste de **7,3:1* (supera o nível AAA para texto normal).
 * *Off-White sobre Preto: razão de contraste de **16,4:1* (supera com folga o mínimo recomendado de 4,5:1).
 
-* ## JavaScript
+## JavaScript
 
-**Formulário:** "Fale Conosco / Agendamento" (`frontend/index.html`, seção `#contato`), conferido por `frontend/js/script.js` no evento `submit`, antes de enviar.
+**Formulário:** "Fale Conosco / Agendamento" (`frontend/index.html`, seção `#contato`), conferido por `frontend/js/script.js` no evento `submit`, antes de enviar. Quando uma regra é quebrada, o envio é cancelado (`preventDefault`) e o aviso aparece na página; com tudo certo, os dados seguem para o PHP.
 
 **Regras (uma por linha):**
 * Nome do tutor: espaços duplos são removidos (`while`) e precisa ter entre 3 e 60 letras (`if` com `||`).
@@ -122,3 +122,14 @@ A conformidade visual segue as diretrizes WCAG:
 * Assunto "Agendar um serviço": a mensagem precisa ter pelo menos 10 caracteres (`else if` com `&&`).
 * A dica (placeholder) da mensagem muda conforme o assunto escolhido (`switch` no evento `change`).
 
+## PHP
+
+**Arquivo:** `backend/controllers/processa-contato.php`, chamado pelo `action` do formulário com `method="POST"`.
+
+**O que ele faz:**
+* Lê os campos `nome`, `pet`, `assunto` e `mensagem` com `$_POST` (com `?? ""` para não dar erro se nada vier).
+* Acerta o fuso para `America/Sao_Paulo` e registra a data e a hora do envio com `date()`.
+* Conta os caracteres da mensagem com `mb_strlen()` e calcula quantos sobraram do limite de 500.
+* Troca o `value` do assunto pelo texto que a pessoa leu (`switch`).
+* Passa tudo o que veio do formulário por `htmlspecialchars()` antes de mostrar na página.
+* Devolve uma página de agradecimento com o mesmo CSS do site.
