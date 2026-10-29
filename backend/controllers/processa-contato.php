@@ -3,6 +3,7 @@
    ARA0062 — STARK SHOP — recebe o formulário de contato do frontend
    Ciclo 8: o PHP lê o que o formulário enviou (method="post") e devolve
    uma página de agradecimento com o mesmo CSS do site.
+   Ciclo 9: antes de responder, grava a mensagem na tabela mensagens.
 
    O formulário (frontend/index.html) aponta para cá:
    <form action="../backend/controllers/processa-contato.php" method="POST">
@@ -19,6 +20,22 @@ $nome     = $_POST["nome"] ?? "";
 $pet      = $_POST["pet"] ?? "";
 $assunto  = $_POST["assunto"] ?? "";
 $mensagem = $_POST["mensagem"] ?? "";
+
+// nome vazio: ninguém passou pelo formulário (abriram o arquivo direto)
+if ($nome === "") {
+    exit("Nada chegou do formulário. Envie pela página: ../../frontend/index.html");
+}
+
+require "../config/conexao.php";
+
+// ? no lugar dos valores: o banco nunca confunde o que foi digitado com o comando
+$sql = "INSERT INTO mensagens (nome, pet, assunto, mensagem)
+        VALUES (?, ?, ?, ?)";
+
+$comando = $conexao->prepare($sql);
+$comando->execute([$nome, $pet, $assunto, $mensagem]);
+
+$numero = $conexao->lastInsertId();   // o id que o banco acabou de dar
 
 $limite  = 500;
 $hoje    = date("d/m/Y");
@@ -67,13 +84,15 @@ $mensagemSegura = htmlspecialchars($mensagem);
     <main>
         <section id="resposta">
             <h2>Obrigado, <?php echo $nomeSeguro; ?>!</h2>
-            <p class="aviso"><?php echo $carimbo; ?></p>
+            <p class="aviso">Mensagem nº <?php echo $numero; ?> guardada.
+               <?php echo $carimbo; ?></p>
             <p>Recebemos a sua solicitação para <strong><?php echo $petSeguro; ?></strong>.</p>
             <p>Assunto: <?php echo $assuntoTexto; ?></p>
             <p>A sua mensagem tem <?php echo $tamanho; ?> caracteres
                (sobraram <?php echo $sobra; ?> dos <?php echo $limite; ?>).</p>
             <blockquote><?php echo $mensagemSegura; ?></blockquote>
-            <p><a href="../../frontend/index.html#contato">← Voltar para a página</a></p>
+            <p><a href="../../frontend/index.html#contato">← Voltar para a página</a>
+               · <a href="mensagens.php">Ver todas as mensagens</a></p>
         </section>
     </main>
 
@@ -82,3 +101,4 @@ $mensagemSegura = htmlspecialchars($mensagem);
     </footer>
 </body>
 </html>
+
