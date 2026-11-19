@@ -19,6 +19,7 @@
                 <li><a href="#servicos">Serviços</a></li>
                 <li><a href="#valores">Preços</a></li>
                 <li><a href="#contato">Contato</a></li>
+                <li><a href="../backend/controllers/mensagens.php">Mensagens</a></li>
             </ul>
         </nav>
         <h1>STARK SHOP</h1>
@@ -72,14 +73,16 @@
 
         <section id="contato">
             <h2>Fale Conosco / Agendamento</h2>
-            <form action="../backend/controllers/processa-contato.php" method="POST">
+            <form action="../backend/controllers/processa-contato.php" method="POST" novalidate>
                 <div>
                     <label for="nome">Nome do Tutor:</label>
                     <input type="text" id="nome" name="nome" required>
+                    <p id="erro-nome" class="aviso" aria-live="polite"></p>
                 </div>
                 <div>
                     <label for="pet">Nome do Pet:</label>
                     <input type="text" id="pet" name="pet" required>
+                    <p id="erro-pet" class="aviso" aria-live="polite"></p>
                 </div>
                 <div>
                     <label for="assunto">Assunto:</label>
@@ -93,6 +96,7 @@
                 <div>
                     <label for="mensagem">Mensagem / Serviço Desejado:</label>
                     <textarea id="mensagem" name="mensagem" rows="4" maxlength="500" required></textarea>
+                    <p id="erro-mensagem" class="aviso" aria-live="polite"></p>
                 </div>
 
                 <button type="submit">Enviar Solicitação</button>
