@@ -27,15 +27,24 @@ Interface web do projeto **Stark Shop**, desenvolvida com foco em simplicidade, 
 
 ##  Estrutura de Arquivos
 
-A pasta `frontend/` está organizada da seguinte maneira:
+O projeto está organizado da seguinte maneira:
 
 ```text
 frontend/
 ├── css/
-│   └── estilo.css       # Folha de estilos customizada (layout, cores, tipografia e responsividade)
+│   ├── estilo.css       # Folha de estilos customizada (layout, cores, tipografia e responsividade)
+│   └── tema-claro.css   # Variáveis de cor do tema claro
 ├── js/
-│   └── script.js        # Lógica de interatividade (validações, máscaras e comportamento dinâmico)
-└── index.html           # Estrutura principal da página (vitrine, seções e formulário)
+│   └── script.js        # Validação do formulário antes do envio
+└── index.html           # Estrutura principal da página (serviços, preços e formulário)
+backend/
+├── config/
+│   └── conexao.php      # Conexão PDO com o banco stark_shop
+├── controllers/
+│   ├── processa-contato.php  # Recebe o formulário e grava com INSERT
+│   └── mensagens.php         # Lista as mensagens do banco com SELECT
+└── sql/
+    └── banco.sql        # Cria o banco stark_shop e a tabela mensagens
 ```
 
 ---
@@ -69,11 +78,16 @@ Para testar a integração completa com o formulário/PHP, é necessário rodar 
 3. Clique com o botão direito sobre `frontend/index.html` e selecione **"Open with Live Server"**.
 
 ### 3. Acessando via Servidor Local (com Backend PHP)
-1. Coloque o repositório na pasta raiz do seu servidor local (ex: `htdocs/` no XAMPP).
-2. Certifique-se de que o servidor Apache e o MySQL estejam ativos.
-3. Acesse pelo navegador:
+1. Coloque a pasta `ara0062-equipe-patas` dentro de `C:\xampp\htdocs\`.
+2. No painel do XAMPP, ligue o **Apache** e o **MySQL**.
+3. Abra `http://localhost/phpmyadmin`, vá na aba **Importar** e importe o arquivo `backend/sql/banco.sql` (ele cria o banco `stark_shop` e a tabela `mensagens`).
+4. Acesse pelo navegador:
    ```text
    http://localhost/ara0062-equipe-patas/frontend/
+   ```
+5. As mensagens gravadas aparecem em:
+   ```text
+   http://localhost/ara0062-equipe-patas/backend/controllers/mensagens.php
    ```
 
 ---
@@ -114,7 +128,10 @@ A conformidade visual segue as diretrizes WCAG:
 
 **Formulário:** "Fale Conosco / Agendamento" (`frontend/index.html`, seção `#contato`), conferido por `frontend/js/script.js` no evento `submit`, antes de enviar. Quando uma regra é quebrada, o envio é cancelado (`preventDefault`) e o aviso aparece na página; com tudo certo, os dados seguem para o PHP.
 
+O formulário tem `novalidate`: quem confere os campos obrigatórios é o JavaScript, e cada erro aparece no parágrafo logo abaixo do campo com problema (`#erro-nome`, `#erro-pet`, `#erro-mensagem`).
+
 **Regras (uma por linha):**
+* Nome do tutor, nome do pet e mensagem: não podem ficar vazios.
 * Nome do tutor: espaços duplos são removidos (`while`) e precisa ter entre 3 e 60 letras (`if` com `||`).
 * Nome do tutor: não pode ter números (`for` com `break`, na função `temNumero`).
 * Nome do pet: precisa ter entre 2 e 30 letras (`else if` com `||`).
@@ -128,8 +145,43 @@ A conformidade visual segue as diretrizes WCAG:
 
 **O que ele faz:**
 * Lê os campos `nome`, `pet`, `assunto` e `mensagem` com `$_POST` (com `?? ""` para não dar erro se nada vier).
+* Grava a mensagem na tabela `mensagens` com `INSERT`, usando a conexão PDO e `prepare` com `?`, e mostra o número que o banco deu (`lastInsertId()`).
 * Acerta o fuso para `America/Sao_Paulo` e registra a data e a hora do envio com `date()`.
 * Conta os caracteres da mensagem com `mb_strlen()` e calcula quantos sobraram do limite de 500.
 * Troca o `value` do assunto pelo texto que a pessoa leu (`switch`).
 * Passa tudo o que veio do formulário por `htmlspecialchars()` antes de mostrar na página.
 * Devolve uma página de agradecimento com o mesmo CSS do site.
+
+## Banco de dados
+
+**Arquivo:** `backend/sql/banco.sql`, que cria o banco `stark_shop` e a tabela `mensagens` (`id`, `nome`, `pet`, `assunto`, `mensagem`, `criado_em`).
+
+* `backend/config/conexao.php` abre a conexão PDO, incluída pelos outros arquivos do backend com `require`.
+* `backend/controllers/processa-contato.php` grava cada envio do formulário com `INSERT` e `prepare`.
+* `backend/controllers/mensagens.php` lê a tabela com `SELECT ... ORDER BY id DESC` e monta uma linha da tabela HTML para cada registro com `foreach`. Nada está escrito à mão: uma linha nova no banco aparece na tela.
+
+---
+
+## Quem fez o quê
+
+### Marina Pinheiro Santana (líder) · `marinasantanatrab-cyber`
+* `<head>` e `<header>` do `index.html` (metadados, fontes e cabeçalho).
+* Variáveis de cor e fonte (`:root`) em `estilo.css` e o tema claro (`tema-claro.css`).
+* Validação do formulário em `frontend/js/script.js`.
+* Backend: `processa-contato.php`, `conexao.php` (PDO), `banco.sql` e a tela `mensagens.php`.
+
+### Raquel Pacheco Mendes · `RaquelMendes-tech`
+* README do projeto (descrição, estrutura e identidade visual).
+* Estilos de botão, rodapé, títulos, tabela e layout geral em `estilo.css`.
+* Organização das pastas `frontend/` e `backend/` no repositório.
+
+### Matheus Salazar Pereira · `salazarbh56-coder`
+* Estilos do cabeçalho, dos títulos `h1` e `h2` e da navegação em `estilo.css`.
+
+### Izabelle Duarte Rodrigues · `Izabelled`
+* Formulário de contato no `index.html`.
+* Estilos do formulário em `estilo.css` (`fieldset`, `legend`, `label`, campos e `textarea`).
+
+### Priscila Da Costa Pereira · `traxxas33-collab`
+* Tabela de Preços (`#valores`) no `index.html`.
+* Primeira versão da página e revisão dos estilos do formulário em `estilo.css`.
