@@ -1,3 +1,4 @@
+<?php
 /* ===========================================================================
    ARA0062 — conexão com o banco de dados
    Ciclo 9: a conexão PDO com o banco stark_shop (backend/sql/banco.sql).
@@ -14,4 +15,3 @@ $senha    = "";
 
 $conexao = new PDO("mysql:host=$servidor;dbname=$banco;charset=utf8mb4",
                    $usuario, $senha);
-
