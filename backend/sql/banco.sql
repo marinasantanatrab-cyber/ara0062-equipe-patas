@@ -4,6 +4,9 @@
 -- Como usar: no phpMyAdmin, aba "Importar", escolher este arquivo e executar.
 -- ===========================================================================
 
+-- o texto deste arquivo está em UTF-8: sem esta linha os acentos chegam quebrados
+SET NAMES utf8mb4;
+
 CREATE DATABASE IF NOT EXISTS stark_shop
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci;
